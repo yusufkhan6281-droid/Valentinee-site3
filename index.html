@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valentine for Jaani 💖</title>
+
+  <style>
+    :root{
+      --pink1:#ff9a9e;
+      --pink2:#fad0c4;
+      --hot:#ff3d6e;
+      --card:#ffffff;
+      --text:#222;
+    }
+
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      height:100vh;
+      overflow:hidden;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: linear-gradient(135deg, var(--pink1), var(--pink2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+    }
+
+    .card{
+      width:min(420px, 92vw);
+      background: rgba(255,255,255,0.92);
+      border-radius:24px;
+      padding:22px 18px 26px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.18);
+      text-align:center;
+      position:relative;
+      backdrop-filter: blur(8px);
+      animation: popIn .6s ease;
+    }
+
+    @keyframes popIn{
+      from{transform:scale(.85); opacity:0;}
+      to{transform:scale(1); opacity:1;}
+    }
+
+    h1{
+      margin: 6px 0 8px;
+      color: var(--hot);
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .sub{
+      margin: 0 0 14px;
+      color:#333;
+      font-size: 14px;
+      opacity:.85;
+    }
+
+    .emojiRow{
+      font-size: 22px;
+      margin-bottom: 10px;
+      animation: wiggle 1.8s ease-in-out infinite;
+    }
+
+    @keyframes wiggle{
+      0%,100%{transform:rotate(0deg)}
+      50%{transform:rotate(2deg)}
+    }
+
+    .btnRow{
+      margin-top: 14px;
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+      height:64px;
+    }
+
+    button{
+      border:none;
+      cursor:pointer;
+      font-size:16px;
+      padding:12px 22px;
+      border-radius:999px;
+      transition: transform .12s ease, box-shadow .12s ease;
+      user-select:none;
+    }
+
+    button:active{transform:scale(.96);}
+
+    .yes{
+      background: var(--hot);
+      color:white;
+      box-shadow: 0 10px 25px rgba(255, 61, 110, 0.35);
+    }
+    .yes:hover{transform: translateY(-1px);}
+
+    .no{
+      background:#e9e9e9;
+      color:#333;
+      position:absolute;
+      left: 55%;
+      top: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.10);
+    }
+
+    /* Floating hearts */
+    .heart{
+      position:fixed;
+      bottom:-30px;
+      font-size: 18px;
+      pointer-events:none;
+      animation: floatUp linear forwards;
+      opacity:.95;
+      filter: drop-shadow(0 8px 10px rgba(0,0,0,.12));
+    }
+    @keyframes floatUp{
+      to{
+        transform: translateY(-120vh) translateX(var(--drift));
+        opacity:0;
+      }
+    }
+
+    /* Confetti */
+    .confetti{
+      position:fixed;
+      width:10px;
+      height:14px;
+      top:-20px;
+      left:0;
+      pointer-events:none;
+      opacity:.95;
+      animation: confFall linear forwards;
+      border-radius:3px;
+    }
+    @keyframes confFall{
+      to{
+        transform: translateY(120vh) rotate(720deg);
+        opacity:0.2;
+      }
+    }
+
+    /* Flower pop */
+    .flower{
+      position:fixed;
+      font-size: 22px;
+      pointer-events:none;
+      animation: flowerPop .9s ease forwards;
+      filter: drop-shadow(0 10px 14px rgba(0,0,0,.15));
+    }
+    @keyframes flowerPop{
+      0%{transform:scale(.3); opacity:0;}
+      50%{transform:scale(1.3); opacity:1;}
+      100%{transform:scale(.9); opacity:0;}
+    }
+
+    /* Final screen */
+    .final{
+      width:min(520px, 94vw);
+      background: rgba(255,255,255,0.92);
+      border-radius:26px;
+      padding:18px;
+      text-align:center;
+      box-shadow: 0 18px 55px rgba(0,0,0,0.18);
+      animation: popIn .6s ease;
+    }
+
+    .final h2{
+      margin: 6px 0 6px;
+      color: var(--hot);
+      font-size: 22px;
+    }
+
+    .final p{
+      margin: 8px 0 14px;
+      color:#222;
+      font-size: 15px;
+      line-height:1.5;
+    }
+
+    .photoWrap{
+      margin-top: 10px;
+      border-radius: 22px;
+      overflow:hidden;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.18);
+      border: 6px solid rgba(255, 61, 110, 0.25);
+    }
+    .photoWrap img{
+      width:100%;
+      display:block;
+    }
+
+    .tiny{
+      font-size: 12px;
+      opacity:.75;
+      margin-top: 10px;
+    }
+
+    .shake{
+      animation: shake .35s ease;
+    }
+    @keyframes shake{
+      0%{transform:translateX(0)}
+      25%{transform:translateX(-6px)}
+      50%{transform:translateX(6px)}
+      75%{transform:translateX(-4px)}
+      100%{transform:translateX(0)}
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card" id="card">
+    <div class="emojiRow">💘😂🌸💖😈💐</div>
+    <h1>Jaani, will you be my Valentine? 💗</h1>
+    <p class="sub">From: <b>Rizz</b> (your future headache 😭)</p>
+
+    <div class="btnRow">
+      <button class="yes" id="yesBtn">Yes 😍</button>
+      <button class="no" id="noBtn">No 🙄</button>
+    </div>
+
+    <p class="tiny">Tip: Try clicking “No” 😌</p>
+  </div>
+
+<script>
+  // ========= SETTINGS =========
+  const YOUR_NAME = "Rizz";
+  const HIS_NAME = "Jaani";
+
+  // PUT YOUR PHOTO LINK HERE (must be direct image link)
+  // Example: https://i.imgur.com/xxxxx.jpg
+  const PHOTO_LINK = "PASTE_YOUR_IMAGE_LINK_HERE";
+
+  // ========= NO BUTTON FUNNY RUN =========
+  const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+  const card = document.getElementById("card");
+
+  const noTexts = [
+    "No 🙄",
+    "Still No 😤",
+    "Stop 😭",
+    "Jaani pls 😭",
+    "Rizz is crying 😢",
+    "Okay fine 😒",
+    "No means yes 😈",
+    "Try harder 😏",
+    "Nope 😂",
+    "Catch me first 🏃‍♂️"
+  ];
+
+  let noCount = 0;
+
+  function moveNoButton() {
+    const cardRect = card.getBoundingClientRect();
+
+    // keep inside visible card area
+    const maxX = cardRect.width - noBtn.offsetWidth - 20;
+    const maxY = 64 - noBtn.offsetHeight; // within button row
+
+    const x = 20 + Math.random() * maxX;
+    const y = 0 + Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    noBtn.innerText = noTexts[noCount % noTexts.length];
+    noCount++;
+
+    // flower pop when he tries no
+    flowerPop(cardRect.left + x + 40, cardRect.top + 120);
+  }
+
+  // on hover (laptop) + on touch (mobile)
+  noBtn.addEventListener("mouseenter", moveNoButton);
+  noBtn.addEventListener("click", moveNoButton);
+  noBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    moveNoButton();
+  }, {passive:false});
+
+  // ========= YES CLICK =========
+  yesBtn.addEventListener("click", () => {
+    burstConfetti(120);
+    for(let i=0;i<18;i++){
+      setTimeout(()=>heartFloat(), i*60);
+    }
+
+    // Replace body with final screen
+    document.body.innerHTML = `
+      <div class="final">
+        <div style="font-size:26px;">🎉💖💐😂💘</div>
+        <h2>YAYYYYY ${HIS_NAME}!!! 😭❤️</h2>
+        <p>
+          ${HIS_NAME}, you just made <b>${YOUR_NAME}</b> the happiest person today 😌💗<br/>
+          Now you’re officially stuck with me 😈✨
+        </p>
+
+        <div class="photoWrap">
+          <img src="${PHOTO_LINK}" alt="Our photo" />
+        </div>
+
+        <p class="tiny">
+          PS: If you try to say “No” now… the button already ran away 😭😂
+        </p>
+      </div>
+    `;
+
+    // Keep animations running in final screen
+    setInterval(()=>heartFloat(), 300);
+    setInterval(()=>burstConfetti(10), 1200);
+  });
+
+  // ========= HEARTS =========
+  function heartFloat(){
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = ["💖","💗","💘","💕","🌸","💐","😍"][Math.floor(Math.random()*7)];
+
+    const left = Math.random() * 100;
+    const dur = 4 + Math.random() * 3;
+    const drift = (Math.random() * 140 - 70) + "px";
+
+    heart.style.left = left + "vw";
+    heart.style.animationDuration = dur + "s";
+    heart.style.setProperty("--drift", drift);
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>heart.remove(), dur*1000);
+  }
+
+  // ========= CONFETTI =========
+  function burstConfetti(amount=40){
+    for(let i=0;i<amount;i++){
+      const c = document.createElement("div");
+      c.className = "confetti";
+      c.style.left = Math.random()*100 + "vw";
+      c.style.animationDuration = (3 + Math.random()*3) + "s";
+      c.style.transform = `rotate(${Math.random()*360}deg)`;
+      c.style.background = ["#ff3d6e","#ffd166","#06d6a0","#118ab2","#8338ec","#ff7aa2"][Math.floor(Math.random()*6)];
+      c.style.width = (6 + Math.random()*10) + "px";
+      c.style.height = (8 + Math.random()*14) + "px";
+      document.body.appendChild(c);
+      setTimeout(()=>c.remove(), 6500);
+    }
+  }
+
+  // ========= FLOWERS POP =========
+  function flowerPop(x,y){
+    const f = document.createElement("div");
+    f.className = "flower";
+    f.innerText = ["🌸","🌺","💐","🌷","🪷"][Math.floor(Math.random()*5)];
+    f.style.left = x + "px";
+    f.style.top = y + "px";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(), 900);
+  }
+
+  // ========= START BACKGROUND ANIMATIONS =========
+  setInterval(()=>heartFloat(), 450);
+</script>
+
+</body>
+</html>
